@@ -18,7 +18,7 @@ The use of PNM-1 anti-personnel landmines, along with poor documentation and sca
 
 
 ## Note:
-
+The code in the "HW_Interface" folder is designed to run on a Teensy 3.5. To compile, it requires the PWMServo library, a copy of which is included in the "libraries" folder. Additionally, the Teensyduino add-on for the Arduino IDE is needed.
 
 ## Other Repositories Needed:
 Base Station Code: https://github.com/edfoltan/MQP_DAS/   
