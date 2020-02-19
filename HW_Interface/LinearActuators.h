@@ -13,8 +13,9 @@
 extern volatile uint8_t L_LA_enc_state, R_LA_enc_state;
 extern volatile int32_t L_LA_enc_count, R_LA_enc_count;
 
-void LA_init();		// Set up code for both linear actuators
-void L_ENC_ISR();	// ISR for encoder interrupts for left LA
-void R_ENC_ISR();	// ISR for encoder interrupts for right LA
+void LA_init();		    // Set up code for both linear actuators
+void LA_zero();       // Zero the linear actuators
+void L_ENC_ISR();	    // ISR for encoder interrupts for left LA
+void R_ENC_ISR();	    // ISR for encoder interrupts for right LA
 
 #endif

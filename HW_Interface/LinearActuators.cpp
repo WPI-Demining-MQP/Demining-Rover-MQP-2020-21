@@ -30,6 +30,12 @@ void LA_init() {
 	attachInterrupt(R_LA_ENC_2, R_ENC_ISR, CHANGE);
 }
 
+// Zero both linear actuators
+void LA_zero() {
+  // TODO: Drive both actuators to one end (top or bottom) to zero them
+  //       Potentially watch the encoders to see when they stop
+}
+
 // ISR for encoder interrupts for left LA
 void L_ENC_ISR() {
 	L_LA_enc_state = (digitalRead(L_LA_ENC_1) << 3) | (digitalRead(L_LA_ENC_2) << 2) | (L_LA_enc_state >> 2);
