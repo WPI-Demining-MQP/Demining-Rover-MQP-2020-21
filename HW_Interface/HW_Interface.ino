@@ -40,9 +40,15 @@ void setup() {
 void loop() {
   // TODO: A control loop for each linear actuator
   // TODO: A control loop for the slider
+  //        Note: cubic nonsense that slows down before hitting the mechanical stop on each end 
+  // TODO: A control loop for the sensor head actuation
+  //        Note: This will be a control loop where the ultrasonic distance will move the linear actuators until the encoders match the desired height
+  //        This will also influence the servos on the sensor head if the sensor head needs to slant at all 
   // TODO: Read ultrasonics in sequence
   //       Note: this is a long process - it needs to be nonblocking and split across many loop iterations
+  //        Note: this will be a mini state machine to keep them running in sequence, with the interupts changing the states         
   //       Probably a small state machine for this. Potentially a separate class since there're 4 of them
   // TODO: Update pitch/roll servos based on ultrasonic readings
   // TODO: Poll the pin coming from the metal detector
+  //        Note: On the rising edge of a frequency: Scan for the maximum value to send as the dGPS location
 }
