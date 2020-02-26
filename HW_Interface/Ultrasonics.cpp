@@ -1,10 +1,14 @@
-#include <Ultrasonics.h>
+#include "Ultrasonics.h"
 
 volatile uint32_t timer = 0;
 volatile double ultrasonic_1_dist = 0;
 volatile double ultrasonic_2_dist = 0;
 volatile double ultrasonic_3_dist = 0;
 volatile double ultrasonic_4_dist = 0;
+
+volatile enum ultrasonic_state_t ultrasonic_state = idle;
+
+uint32_t ultrasonic_last_start_time = 0;
 
 void ultrasonics_init() {
 	// Setup ultrasonics to initial state (ready to trigger)
@@ -26,6 +30,7 @@ void ultrasonic_1_ISR() {
 	}
 	else {
 		ultrasonic_1_dist = US_TO_DIST(micros() - timer);
+		ultrasonic_state = US_2;
 	}
 }
 
@@ -35,6 +40,7 @@ void ultrasonic_2_ISR() {
 	}
 	else {
 		ultrasonic_2_dist = US_TO_DIST(micros() - timer);
+		ultrasonic_state = US_3;
 	}
 }
 
@@ -44,6 +50,7 @@ void ultrasonic_3_ISR() {
 	}
 	else {
 		ultrasonic_3_dist = US_TO_DIST(micros() - timer);
+		ultrasonic_state = US_4;
 	}
 }
 
@@ -53,5 +60,6 @@ void ultrasonic_4_ISR() {
 	}
 	else {
 		ultrasonic_4_dist = US_TO_DIST(micros() - timer);
+		ultrasonic_state = idle;
 	}
 }
