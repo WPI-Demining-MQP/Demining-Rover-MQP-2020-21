@@ -2,11 +2,8 @@
 #include "ComputerComms.h"
 #include "LinearActuators.h"
 #include "Slider.h"
+#include "Ultrasonics.h"
 
-#define ULTRASONIC_1  1   // Ultrasonic 1 (trigger and echo)
-#define ULTRASONIC_2  2   // Ultrasonic 2 (trigger and echo)
-#define ULTRASONIC_3  3   // Ultrasonic 3 (trigger and echo)
-#define ULTRASONIC_4  4   // Ultrasonic 4 (trigger and echo)
 #define SERVO_PITCH   20  // Pitch servo pin
 #define SERVO_ROLL    14  // Roll servo pin
 #define MD_INPUT      5   // Metal detector input
@@ -18,12 +15,9 @@ void setup() {
 
   // Initialize linear actuator functionality
   LA_init();
-  
-  // Setup ultrasonics to initial state (ready to trigger)
-  pinMode(ULTRASONIC_1, OUTPUT);
-  pinMode(ULTRASONIC_2, OUTPUT);
-  pinMode(ULTRASONIC_3, OUTPUT);
-  pinMode(ULTRASONIC_4, OUTPUT);
+
+  // Initialize ultrasonic sensors
+  ultrasonics_init();
 
   // Setup servos
   pitch_servo.attach(SERVO_PITCH);
